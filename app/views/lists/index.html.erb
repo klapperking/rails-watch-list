@@ -1,0 +1,13 @@
+<h1>Index page</h1>
+
+<%= link_to('My lists', lists_path) %>
+<%= link_to('New list', new_list_path) %>
+
+<ul>
+<% @lists.each do |list| %>
+  <li>
+    <%= link_to(list.name, list_path(list)) %>
+  </li>
+<% end %>
+
+</ul>
