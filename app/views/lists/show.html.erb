@@ -1,12 +1,16 @@
 <h1><%= @list.name %></h1>
 
 <ul>
-  <% @list.movies.each do |movie| %>
+  <% @list.bookmarks.each do |bookmark| %>
     <li>
-      <%= movie.title %>
-      <%= movie.rating %>
+      <%= bookmark.movie.title %>
+      <%= bookmark.movie.rating %>
+      <%= link_to('Remove from List', list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to('Destroy this list', list_path(@list), data: { turbo_method: :delete }) %>
+<%= link_to('Add a bookmark to this list', new_list_bookmark_path(@list)) %>
+
+
+<%= link_to('Destroy this list', list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
