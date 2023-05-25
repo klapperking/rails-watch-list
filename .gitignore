@@ -34,3 +34,7 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+
+# Ignore Keys
+/db/__moviedb_token.json
