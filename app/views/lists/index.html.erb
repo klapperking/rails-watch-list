@@ -11,3 +11,8 @@
 <% end %>
 
 </ul>
+
+<%= simple_form_for(@movie, url: search_movies_path) do |f| %>
+  <%= f.input :title %>
+  <%= f.submit %>
+<% end %>
