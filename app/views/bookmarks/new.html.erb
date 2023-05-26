@@ -1,7 +1,17 @@
 <h1>Create a new bookmark for list <%= @list.name %></h1>
 
 <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.association :movie  %>
+  <%= f.association :movie,
+                    input_html: {
+                      placeholder: 'Select a movie...',
+                      data: {
+                        controller: 'tom-select',
+                        tom_select_options_value: {
+                          tags: true
+                          }
+                        }
+                      }
+  %>
   <%= f.input :comment %>
   <%= f.submit %>
 <% end %>

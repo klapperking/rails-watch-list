@@ -2,9 +2,10 @@
 
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
+    <% movie = bookmark.movie %>
     <li>
-      <%= bookmark.movie.title %>
-      <%= bookmark.movie.rating %>
+      <%= movie.title %>
+      <%= movie.rating %>
       <%= link_to('Remove from List', list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) %>
     </li>
   <% end %>
