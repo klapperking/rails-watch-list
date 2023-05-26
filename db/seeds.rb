@@ -1,9 +1,16 @@
 require "open-uri"
 require "json"
 require "pry-byebug"
+require "faker"
 
 puts "Removing all movies"
 Movie.destroy_all
+
+puts "Removing all lists and Bookmarks"
+List.destroy_all
+
+puts "Removing all reviews"
+Review.destroy_all
 
 puts "Creating Movies"
 new_req_flag = false
@@ -40,3 +47,22 @@ response["results"].each do |movie|
 end
 
 puts "Created #{Movie.count} movies"
+
+puts "Generating Movie lists"
+6.times do
+  List.create(name: Faker::Company.name)
+end
+
+puts "Generated #{List.count} lists"
+
+puts "Generating bookmarks"
+(Movie.count * 3 ).times do
+
+  Bookmark.create(
+    comment: Faker::Restaurant.review,
+    movie: Movie.all.sample,
+    list: List.all.sample
+  )
+
+end
+puts "Generated #{Bookmark.count} bookmarks"

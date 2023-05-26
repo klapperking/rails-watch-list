@@ -72,3 +72,4 @@ gem 'simple_form'
 
 # debug
 gem 'pry-byebug'
+gem 'faker'
