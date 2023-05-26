@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
-  before_action :set_task, only: %i[show destroy]
+  before_action :set_list, only: %i[show destroy]
   before_action :set_bookmark, only: %i[show]
+  before_action :set_review, only: %i[show]
 
   def index
     @lists = List.all
@@ -33,9 +34,13 @@ class ListsController < ApplicationController
     @bookmark = Bookmark.new
   end
 
+  def set_review
+    @review = Review.new
+  end
+
   protected
 
-  def set_task
+  def set_list
     @list = List.find(params[:id])
   end
 

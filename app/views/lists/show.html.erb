@@ -32,3 +32,26 @@
 </div>
 
 <%= link_to('Destroy this list', list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
+
+<div id="review part">
+
+  <div id="existing-reviews">
+    <ul>
+      <% @list.reviews.each do |review| %>
+        <li>
+          <%= review.rating %>
+          <%= review.comment %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="new-review">
+    <p>Review this list</p>
+    <%= simple_form_for [@list, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, collection: Review::ALLOWED_RATINGS %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
