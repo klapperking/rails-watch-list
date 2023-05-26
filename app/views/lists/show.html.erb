@@ -6,6 +6,7 @@
     <li>
       <%= movie.title %>
       <%= movie.rating %>
+      <%= bookmark.comment %>
       <%= link_to('Remove from List', list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) %>
     </li>
   <% end %>
