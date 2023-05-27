@@ -1,28 +1,15 @@
 class MoviesController < ApplicationController
   def index
-    if params.key?(:format)
-      @movies = Movie.find(params[:format].split('/'))
+    if params[:search]
+      @movies = Movie.search(movie_params[:query]).order("created_at DESC")
     else
-      @movies = Movie.all
+      redirect_to(lists_path, status: :not_found)
     end
-  end
-
-  def search
-    @movies = Movie.search(movie_params[:title])
-
-    #unless @movies
-    #  @movies = Movie.all
-    #end
-    redirect_to(movies_path(@movies))
   end
 
   protected
 
-  def set_movie
-    @movie = Movie.find(params[:id])
-  end
-
   def movie_params
-    params.require(:movie).permit(%i[title])
+    params.require(:search).permit(%i[query])
   end
 end

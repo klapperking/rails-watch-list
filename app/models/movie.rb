@@ -7,8 +7,8 @@ class Movie < ApplicationRecord
 
   def self.search(term)
     # TODO: Search Controller?
-    # where(['title LIKE ?', "%#{term}%"])
+    where(['LOWER(title) LIKE LOWER(?)', "%#{term}%"])
 
-    Movie.all.select { |movie| movie.title.include?(term) }
+    # Movie.all.select { |movie| movie.title.include?(term) }
   end
 end

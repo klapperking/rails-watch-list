@@ -7,9 +7,8 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-  # Movie search
+  # Movies search
   get '/movies', to: 'movies#index', as: :movies
-  post '/movies/search', to: 'movies#search', as: :search_movies
 
   # Base Redirect
   get '/', to: 'lists#index'
