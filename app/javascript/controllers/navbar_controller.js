@@ -6,13 +6,15 @@ export default class extends Controller {
     // Index Page transparent, else sticky-top
     const current = window.location.href
     if ((current.endsWith("lists")) || (current.endsWith("lists#"))) {
-      this.element.classList.add('fixed-top')
       this.element.classList.remove('sticky-top')
+      this.element.classList.add('fixed-top')
       this.element.classList.add('col-white')
     } else {
-      this.element.classList.add('sticky-top')
-      this.element.classList.remove('fixed-top')
+      console.log("Stick-page")
       this.element.classList.remove('col-white')
+      this.element.classList.remove('fixed-top')
+      this.element.style["background-color"] = "white"
+      this.element.classList.add('sticky-top', 'top-0')
     }
   }
 
