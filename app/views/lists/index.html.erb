@@ -1,18 +1,14 @@
-<h1>Index page</h1>
-
-<%= link_to('My lists', lists_path) %>
-<%= link_to('New list', new_list_path) %>
+<%= render('lists/components/banner') %>
 
 <ul>
-<% @lists.each do |list| %>
-  <li>
-    <%= link_to(list.name, list_path(list)) %>
-  </li>
-<% end %>
-
+  <% @lists.each do |list| %>
+    <li>
+      <%= link_to(list.name, list_path(list)) %>
+    </li>
+  <% end %>
 </ul>
 
 <%= simple_form_for(@movie, url: search_movies_path) do |f| %>
-  <%= f.input :title %>
+  <%= f.input :title, as: :search %>
   <%= f.submit %>
 <% end %>

@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   # Movie search
   get '/movies', to: 'movies#index', as: :movies
   post '/movies/search', to: 'movies#search', as: :search_movies
+
+  # Base Redirect
+  get '/', to: 'lists#index'
 end

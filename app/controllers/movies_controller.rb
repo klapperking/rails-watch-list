@@ -10,9 +10,9 @@ class MoviesController < ApplicationController
   def search
     @movies = Movie.search(movie_params[:title])
 
-    unless @movies
-      @movies = Movie.all
-    end
+    #unless @movies
+    #  @movies = Movie.all
+    #end
     redirect_to(movies_path(@movies))
   end
 
