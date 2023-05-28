@@ -59,7 +59,7 @@ puts "Generating bookmarks"
 (Movie.count * 3 ).times do
 
   Bookmark.create(
-    comment: Faker::Restaurant.review,
+    comment: [Faker::Adjective.positive, Faker::Adjective.negative].sample,
     movie: Movie.all.sample,
     list: List.all.sample
   )
