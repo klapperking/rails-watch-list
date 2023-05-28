@@ -1,16 +1,31 @@
 <h1><%= @list.name %></h1>
 
-<ul>
+
+<div class="card-container movies">
   <% @list.bookmarks.each do |bookmark| %>
     <% movie = bookmark.movie %>
-    <li>
-      <%= movie.title %>
-      <%= movie.rating %>
-      <%= bookmark.comment %>
-      <%= link_to('Remove from List', list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) %>
-    </li>
+    <div class="card movie">
+      <div class="movie-image">
+        <img src="<%= movie.poster_url %>" alt="movie poster">
+      </div>
+      <div class="movie-info">
+        <p><%= movie.title %></p>
+        <p><%= movie.rating %></p>
+      </div>
+      <div class="more-info">
+        <p><%= movie.overview %></p>
+      </div>
+      <div class="actions">
+        <div class="bookmark-comment">
+          <p><%= bookmark.comment %></p>
+        </div>
+        <div class="del-link">
+          <%= link_to('Remove from List', list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <div>
 <p>Bookmark a movie into: <%= @list.name %></p>
