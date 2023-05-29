@@ -5,8 +5,7 @@
   <% @list.bookmarks.each do |bookmark| %>
     <% movie = bookmark.movie %>
     <div class="card movie">
-      <div class="movie-image">
-        <img src="<%= movie.poster_url %>" alt="movie poster">
+      <div class="movie-image" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(<%= movie.poster_url %>)">
       </div>
       <div class="movie-info">
         <p><%= movie.title %></p>
