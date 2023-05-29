@@ -10,7 +10,5 @@ export default class extends Controller {
       this.element,
       this.optionsValue
       )
-
-    console.log(selector)
   }
 }
