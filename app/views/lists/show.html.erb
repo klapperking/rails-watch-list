@@ -8,18 +8,27 @@
       <div class="movie-image" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(<%= movie.poster_url %>)">
       </div>
       <div class="movie-info">
-        <p><%= movie.title %></p>
-        <p><%= movie.rating %></p>
+        <p class="title"><%= movie.title %></p>
+        <p class="rating">
+           -
+          <%= movie.rating %>
+          <i class="fa-solid fa-star" style="color: #ffff00;"></i>
+        </p>
       </div>
       <div class="more-info">
         <p><%= movie.overview %></p>
       </div>
       <div class="actions">
         <div class="bookmark-comment">
-          <p><%= bookmark.comment %></p>
+          <p>
+            <i class="fa-sharp fa-solid fa-quote-left" style="color: #000000;"></i>
+            <%= bookmark.comment %>
+          </p>
         </div>
         <div class="del-link">
-          <%= link_to('Remove from List', list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) %>
+          <%= link_to(list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }) do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
         </div>
       </div>
     </div>
