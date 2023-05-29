@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'movies/search'
-  resources :lists, except: %i[edit update] do
+  root to: 'lists#index'
+
+  resources :lists, except: %i[index edit update] do
 
     # TODO: Refactor create and destroy routes outside nested route
     resources :bookmarks, only: %i[new create destroy]
@@ -9,7 +10,4 @@ Rails.application.routes.draw do
 
   # Movies search
   get '/movies', to: 'movies#index', as: :movies
-
-  # Base Redirect
-  get '/', to: 'lists#index'
 end
